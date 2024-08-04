@@ -1,0 +1,146 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing these this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+# Be sure to exclude vendor from your  _config.yml
+# Travis bundles all gems in the vendor directory on its build servers, which Jekyll will mistakenly read and explode on.
+# https://jekyllrb.com/docs/continuous-integration/
+
+name: Investigandos
+title: Investigandos
+description: Investigandos
+
+author:
+  name: Investigandos
+  email: Investigandos@Investigandos
+
+url: https://investigandos.github.io
+
+socials:
+  twitter:
+  email: 
+  signal: 
+  github: https://github.com/investigandos
+  opencollective: 
+
+lang: es
+
+future: false # to publish posts only when post.date has been reached
+
+repository-source: https://github.com
+raw-repository-source: https://github.com/investigandos/investigandos.github.io/blob/master/
+repository: investigandos/investigandos.github.io/
+
+comments:
+  active: false
+  max_replies_level: 4
+  provider: "staticman"
+  staticman:
+    branch: master # "master"
+    option: comments
+    endpoint: https://sp-staticman.onrender.com/v2/entry/
+
+# reCaptcha
+# Register your domain at https://www.google.com/recaptcha/ and choose reCAPTCHA V2
+reCaptcha:
+  enabled: false
+  siteKey: "6Ld2bccfAAAAACrhq8GfhrFHEWp1dI_P3LUMBUw3"
+  # Encrypt reCaptcha secret key using Staticman /encrypt endpoint
+  # For more information, https://staticman.net/docs/encryption
+  # https://sp-staticman.onrender.com/v3/encrypt/
+  secret: "WiVWBigUCJxT3pU+FocyjzZSIhNxtVWjIKskJ/MaSo8ig4+EUYMpxhsNphPtBbrXUOMrwOBfEeXDJNm8XM5zquitQju5eJ/yD85Kv4uu2NccBRJhDxZicNYBjiThoUQAjd6bYejYSu3x4/HUaM2BWWCzU15cBpKO3v6pcO3/jaFElWTQYKYhw+TmEAm3ZuqxQQFgRobxz/z8K7/CwV8NVuuIom+aBaY5k9CKleBjTsoJ+6ZavmQdhtNyk87HB1r/VIGuVU8L5TG/QTi6V72MqJfGTSLsdozOpU0ANVDNVpnldxHAZubfKIdIYygXyCkKnnn7zFobq/8EGYINXOIRjKGwbDmbNq668JIY3mQH0rk4ILyphYK0yctfEtrPhqt9KO93T9XQmIK2xIzd79dglGPR+kTmx9B9oFuc2VPG1SqtDDobf0hssmwzIuuNYigE1ZL0rx5ku4ZhgjX0TRiPwvbOW3B3uv6YO+w6TtnUbFVZiOECmR/oajt1xg5xIxlkH7b0TswHzJpSL2+6nNQzYL0jqF7rmjhtDlNTHFdcUqVnA/CJIhTA8/lIfpKAvw3ZeoezukIc6hRxCElA1U5dv5COiC4WSXUw5MMcyKjtDkM/Q6l6+kTAhyXfvTSu6B9mJZHJuPjuAkED1oxxdfWZwRfpcUnycvtVHcpFXNzT6EA="
+
+docs_path: /assets/docs/
+images_path: /assets/images/
+
+# Build settings
+markdown: kramdown
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+
+# mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+
+sass:
+  sass_dir: assets/css/partials
+  style: compressed
+
+include:
+  - .htaccess
+  - _pages
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - misc
+  - script
+  - Rakefile
+
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: [local]
+  blanklines: false
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path
+  referencias:
+    output: true
+    permalink: /:collection/:path
+
+# Defaults
+defaults:
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      permalink: :basename
+      layout: single 
+
+  - scope:
+      path: "_docs"
+    values:
+      layout: document
+      comments: false
+      toc_levels: 2
+
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      permalink: blog/:title
+      layout: article
+      show_date: true
+      read_time: true
+      show_status: true
+      comments: true
+      share: true
+      toc: true
+      toc_sticky: true

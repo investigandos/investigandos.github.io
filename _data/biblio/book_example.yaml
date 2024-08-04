@@ -1,0 +1,13 @@
+title: El banquero anarquista y otros cuentos de raciocinio
+authors: [Fernando Pessoa]
+type: book
+isbn: 8420601586
+stars: 5
+categories:
+- Ficción
+- Cuentos cortos
+topics: [Anarquismo, Capitalismo]
+status: read #read, reading, pending (indica el estado de lectura)
+published_date: 2005
+consulted_date: 2024-03-16
+review: true #true, false (indica si se han tomado notas o comentarios -> en caso positivo se mostrarán las notas recogidas)

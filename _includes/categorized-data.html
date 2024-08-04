@@ -1,0 +1,93 @@
+{% assign grouped_data = site.data.biblio | group_by_exp: 'data', 'data[1].type' %}
+
+<ul class="taxonomy__index">
+{% for list in grouped_data %}
+    <li>
+    <a href="#{{ list.name | slugify }}">
+        <strong>{{ list.name | capitalize }}</strong> 
+        <span class="taxonomy__count">{{ list.size }}</span> 
+    </a> 
+    </li>
+{% endfor %}
+</ul> 
+
+{% for list in grouped_data %}
+<section id="{{ list.name }}" class="taxonomy__section">
+    <h2 class="archive__subtitle">{{ list.name }}</h2>
+    <div class="entries-{{ entries_layout }}">
+      {% for data in list.items %}
+          {% assign item = data[1] %}
+          
+            {% if item.type == 'media' %}
+                <div class="grid__item">
+                    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                    <div>
+                        {% if item.platform == 'ivoox' %}
+                            {% include /media/podcast-ivoox-player-mini.html id=item.uid %}
+                        {% elsif item.platform == 'youtube' %}
+                            {% include /media/video-youtube-player.html id=item.uid provider=item.platform %}
+                        {% endif %}
+                        </div>
+                            <span class="stars-container stars-{{ podcast.stars | times:20 | round: 0 }}" title="{{ podcast.stars }}/5">★★★★★</span><br>
+                            {% if item.review %}<a href="/podcasts/reviews/{{ podcast.review }}"> Mis notas </a>{% endif %}
+                            {% if item.posts %}
+                                {% for post in item.posts %}
+                                    <a href="/blog/{{ post }}"> Notas </a><br>
+                                {% endfor %}
+                            {% endif %}
+                    </article>
+                </div>
+
+            {% elsif item.type == 'article' %}
+                <div class="list__item">
+                {% if item.type == 'paper' %}
+                    <a href="https://sci-hub.se/{{ item.doi}}" target="_blank">{{ item.title}}</a>
+                {% else %}
+                    <a href="{{ item.url}}" target="_blank">{{ item.title}}</a>
+                {% endif %}
+                    <p class="page__meta">
+                        <span class="page__meta-date">
+                            <strong>Consultado:</strong>
+                            <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+                            <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%-d %B, %Y" }}</time>
+                        </span>
+                        <span class="page__meta-status text-primary">
+                            {% for tag in item.tags %} | {{ tag }}{% endfor %}
+                        </span>
+                    </p>
+                </div>
+
+            {% elsif item.type == 'books' %}
+                <div class="grid__item">
+                    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                    <div>
+                        {% if item.review %}
+                            <a href="/blog/{{ item.review }}">
+                            {% if item.isbn %}
+                                <img alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
+                            {% else %}
+                                {{ item.title }} por {{ item.authors }}
+                            {% endif %}
+                            </a>
+                        {% else %}
+                            {% if item.isbn %}
+                                <img alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
+                            {% else %}
+                                {{ item.title }} por {{ item.authors }}
+                            {% endif %}
+                        {% endif %}
+                        </div>
+                            {% if item.status == 'read' %}
+                            <span class="stars-container stars-{{ item.stars | times:20 | round: 0 }}" title="{{ item.stars }}/5">★★★★★</span><br>
+                            {% endif %}
+                            {% if item.review %}<a href="/blog/{{ item.review }}"> Mis notas </a>{% endif %}
+                    </article>
+                </div>
+
+            {% endif %}
+      {% endfor %}
+    </div>
+    <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+</section>
+{% endfor %}
+
