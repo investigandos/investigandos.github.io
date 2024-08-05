@@ -9,7 +9,7 @@ layout: page
         <article class="blog-post">
           <h2 class="display-5 link-body-emphasis mb-1">{{page.title}}</h2>
           <p class="blog-post-meta">
-            {% include translated_date.html date=page.date format="%-d %B %Y" %}
+            {{ page_date | date: "%-d %B, %Y" }}
             {% if page.author %}
               por <a href="#">{{page.author}}</a>
             {% endif %}
@@ -30,7 +30,7 @@ layout: page
                       <div class="col-lg-8">
                         <h6 class="mb-0">{{ related.title }} </h6>
                         <small class="text-body-secondary">
-                          {% include translated_date.html date=related.date format="%-d %B %Y" %}
+                          {{ related.date | date: "%-d %B, %Y" }}
                         </small>
                       </div>
                     </a>

@@ -111,7 +111,7 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path
-  referencias:
+  reviews:
     output: true
     permalink: /:collection/:path
 
@@ -136,6 +136,18 @@ defaults:
       type: posts
     values:
       permalink: blog/:title
+      layout: article
+      show_date: true
+      read_time: true
+      show_status: true
+      comments: true
+      share: true
+      toc: true
+      toc_sticky: true
+  
+  - scope:
+      path: "_reviews"
+    values:
       layout: article
       show_date: true
       read_time: true
