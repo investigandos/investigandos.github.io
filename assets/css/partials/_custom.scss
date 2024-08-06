@@ -111,62 +111,6 @@
 /*
    Page taxonomy
    ========================================================================== */
-
-   .page__taxonomy {
-    .sep {
-      display: none;
-    }
-  
-    strong {
-      margin-right: 10px;
-    }
-  }
-  
-  .page__taxonomy-item {
-    display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 8px;
-    padding: 5px 10px;
-    text-decoration: none;
-    border: 1px solid mix(#000, $border-color, 25%);
-    border-radius: $border-radius;
-  
-    &:hover {
-      text-decoration: none;
-      color: $link-color-hover;
-    }
-  }
-  
-  .taxonomy__section {
-    margin-bottom: 2em;
-    padding-bottom: 1em;
-  
-    &:not(:last-child) {
-      border-bottom: solid 1px $border-color;
-    }
-  
-    .archive__item-title {
-      margin-top: 0;
-    }
-  
-    .archive__subtitle {
-      clear: both;
-      border: 0;
-    }
-  
-    + .taxonomy__section {
-      margin-top: 2em;
-    }
-  }
-  
-  .taxonomy__title {
-    margin-bottom: 0.5em;
-    color: $muted-text-color;
-  }
-  
-  .taxonomy__count {
-    color: $muted-text-color;
-  }
   
   .taxonomy__index {
     margin: 1.414em 0;

@@ -13,15 +13,16 @@
 </div>
 
 {% for list in grouped_data %}
-<section id="{{ list.name }}" class="taxonomy__section">
-    <h2 class="archive__subtitle">{{ list.name }}</h2>
-    <div class="entries-{{ entries_layout }}">
+<section id="{{ list.name }}" class="mb-4">
+    <h2 class="">{{ list.name }}</h2>
+    <hr>
+    <div class="row d-flex">
       {% for data in list.items %}
             {% assign item = data[1] %}
-            <div class="list__item my-2">
-            {% if item.type == 'media' %}
+            <div class="col-md-6 flex-column flex-fill my-2">
+                {% if item.type == 'media' %}
                 {% assign id = item.id %}
-                <div class="archive__item">
+                <div class="">
                     {% if item.platform == 'ivoox' %}
                         {% include /media/podcast-ivoox-player-mini.html id=item.id %}
                     {% elsif item.platform == 'youtube' %}
@@ -30,22 +31,22 @@
                 </div>
             {% elsif item.type == 'paper' %}
                 {% assign id = item.doi %}
-                <div class="archive__item">
+                <div class="">
                     <a href="https://sci-hub.se/{{ item.doi}}" target="_blank">{{ item.title}}</a>
                 </div>
             {% elsif item.type == 'article' %}
                 {% assign id = item.url %}
-                <div class="archive__item">
+                <div class="">
                     <a href="{{ item.url}}" target="_blank">{{ item.title}}</a>
                 </div>
 
             {% elsif item.type == 'book' %}
                 {% assign id = item.isbn %}
-                <div class="row">
-                    <div class="col-2">
+                <div class="d-sm-flex">
+                    <div class="me-2">
                         <img class="img-fluid" alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
                     </div>
-                    <div class="col-10">
+                    <div class="">
                         {{ item.title }} por {{ item.authors }}
                         
 
@@ -115,6 +116,8 @@
                 </div>
             </div>
             {% endif %}
+            </div>
+            
         {% endfor %}
     </div>
 </section>
