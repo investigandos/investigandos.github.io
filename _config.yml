@@ -122,12 +122,12 @@ defaults:
       type: pages
     values:
       permalink: :basename
-      layout: single 
+      layout: page 
 
   - scope:
       path: "_docs"
     values:
-      layout: document
+      layout: documentation
       comments: false
       toc_levels: 2
 
@@ -136,14 +136,12 @@ defaults:
       type: posts
     values:
       permalink: blog/:title
-      layout: article
+      layout: blog_article
       show_date: true
       read_time: true
       show_status: true
       comments: true
       share: true
-      toc: true
-      toc_sticky: true
   
   - scope:
       path: "_reviews"
@@ -154,5 +152,3 @@ defaults:
       show_status: true
       comments: true
       share: true
-      toc: true
-      toc_sticky: true
