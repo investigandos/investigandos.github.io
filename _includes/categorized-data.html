@@ -1,15 +1,16 @@
 {% assign grouped_data = site.data.biblio | group_by_exp: 'data', 'data[1].type' %}
-
-<ul class="taxonomy__index">
-{% for list in grouped_data %}
-    <li>
-    <a href="#{{ list.name | slugify }}">
-        <strong>{{ list.name | capitalize }}</strong> 
-        <span class="taxonomy__count">{{ list.size }}</span> 
-    </a> 
-    </li>
-{% endfor %}
-</ul> 
+<div class="mb-3" style="background: #f3f3f3;">
+    <ul class="row taxonomy__index">
+    {% for list in grouped_data %}
+        <li class="col-sm">
+        <a href="#{{ list.name | slugify }}">
+            <strong>{{ list.name | capitalize }}</strong> 
+            <span class="taxonomy__count">{{ list.size }}</span> 
+        </a> 
+        </li>
+    {% endfor %}
+    </ul> 
+</div>
 
 {% for list in grouped_data %}
 <section id="{{ list.name }}" class="taxonomy__section">
