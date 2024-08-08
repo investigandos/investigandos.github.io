@@ -1,14 +1,13 @@
-- type: media
-  title: Building Africa’s Great Green Wall Project
+- id: 69434687
+  type: media
+  title: Why have sperm counts more than halved in the past 40 years?
   platform: ivoox
-  id: 78555823
-  show: Intelligence Squared
-  speakers: [speaker]
-  date: 2021-05-18
+  show: Today in Focus
+  speakers: [Shanna H. Swan]
+  consulted_date: 2021-05-18
   stars: 3
-  category: [Medioambiente]
-  tags: [reforestacion]
-  posts: [2021-05-18-reglas-oro-reforestacion]
+  categories: [Fertilidad]
+  topics: [Contaminación, Factores ambientales]
   added_by: carlos
 
 - title: Análisis comparativo y propuesta metodológica para el análisis del contenido de programas electorales para estimar la posición política en relación al Desarrollo Sostenible

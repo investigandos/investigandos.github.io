@@ -58,7 +58,7 @@
             {% endif %}
 
             {% if item.stars %}
-            <span class="stars-container stars-{{ podcast.stars | times:20 | round: 0 }}" title="{{ podcast.stars }}/5">★★★★★</span>
+            <span class="stars-container stars-{{ item.stars | times:20 | round: 0 }}" title="{{ item.stars }}/5">★★★★★</span>
             {% endif %}
             {% if item.categories %}
             <span class="page__meta-status text-success small">
