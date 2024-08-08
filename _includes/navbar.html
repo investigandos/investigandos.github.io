@@ -18,6 +18,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/recetas">Recetas</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/docs">Documentación</a>
+          </li>
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
           {% if site.socials.email %}
@@ -96,7 +99,9 @@
             {% for part in sections limit: crumb_limit %}
               {% assign crumb = crumb | append: part | append: '/' %}
             {% endfor %}  
-            <li class="breadcrumb-item"><a href="{{ crumb }}">{{ section | replace:'_',' ' | replace:'-',' ' | capitalize }}</a></li>
+            {% assign page_data = site.documents | where: 'url', crumb | size %}
+            <li class="breadcrumb-item">
+              {% if page_data > 0 %}<a href="{{ crumb }}">{% endif %}{{ section | replace:'_',' ' | replace:'-',' ' | capitalize }}{% if page_data %}</a>{% endif %}</li>
           {% endif %}
       {% endfor %}
       
