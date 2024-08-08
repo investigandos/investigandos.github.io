@@ -1,4 +1,5 @@
-{% assign grouped_data = site.data.biblio | group_by_exp: 'data', 'data[1].type' %}
+{% assign grouped_data = site.data.bibliografia | group_by_exp: 'data', 'data.type' %}
+
 <div class="mb-3" style="background: #f3f3f3;">
     <ul class="row taxonomy__index">
     {% for list in grouped_data %}
@@ -18,7 +19,7 @@
     <hr>
     <div class="row d-flex">
       {% for data in list.items %}
-            {% assign item = data[1] %}
+            {% assign item = data %}
             <div class="col-md-6 flex-column flex-fill my-2">
                 {% if item.type == 'media' %}
                 {% assign id = item.id %}
@@ -32,7 +33,11 @@
             {% elsif item.type == 'paper' %}
                 {% assign id = item.doi %}
                 <div class="">
+                    {% if item.url %}
+                    <a href="{{item.url}}" target="_blank">{{ item.title}}</a>
+                    {% else %}
                     <a href="https://sci-hub.se/{{ item.doi}}" target="_blank">{{ item.title}}</a>
+                    {% endif %}
                 </div>
             {% elsif item.type == 'article' %}
                 {% assign id = item.url %}
