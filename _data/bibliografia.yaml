@@ -11,21 +11,6 @@
   posts: [2021-05-18-reglas-oro-reforestacion]
   added_by: carlos
 
-- title: El banquero anarquista y otros cuentos de raciocinio
-  authors: [Fernando Pessoa]
-  type: book
-  isbn: 8420601586
-  stars: 5
-  categories:
-  - Ficción
-  - Cuentos cortos
-  topics: [Anarquismo, Capitalismo]
-  status: read #read, reading, pending (indica el estado de lectura)
-  published_year: 2005
-  consulted_date: 2024-03-16
-  review: true
-  added_by: carlos
-
 - title: Análisis comparativo y propuesta metodológica para el análisis del contenido de programas electorales para estimar la posición política en relación al Desarrollo Sostenible
   type: article
   url: https://riunet.upv.es/handle/10251/52032
@@ -35,7 +20,6 @@
   published_year: 2005
   consulted_date: 2024-03-16
   authors: 'Diego Álvarez Sánchez, José Félix Lozano Aguilar'
-  review: false
   added_by: carlos
 
 - title: FIRST Human Age-Reversal Trial REPLICATED! This Groundbreaking Treatment Holds the Key to YOUTH?
@@ -61,3 +45,28 @@
   consulted_date: 2024-08-08
   added_by: carlos
   status: pending
+
+- title: The Wahls Protocol
+  authors: [Terry Wahls]
+  type: book
+  isbn: 9781583335215
+  stars: 4
+  categories: [Enfermedades autoinmunes]
+  topics: [Dieta, Paleo]
+  status: reading 
+  published_year: 2014
+  consulted_date: 2024-07-01
+  added_by: nestor
+
+- title: Anti Cáncer
+  authors: [David Servan-Schreiber]
+  type: book
+  isbn: 9780670020348
+  stars: 4
+  categories: [Cáncer]
+  topics: [Dieta]
+  status: read #read, reading, pending (indica el estado de lectura)
+  published_year: 2008
+  consulted_date: 2023-03-16
+  added_by: carlos
+

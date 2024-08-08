@@ -15,7 +15,7 @@
 
 {% for list in grouped_data %}
 <section id="{{ list.name }}" class="mb-4">
-    <h2 class="">{{ list.name }}</h2>
+    <h2 class="">{{ list.name | capitalize}}</h2>
     <hr>
     <div class="row d-flex">
       {% for data in list.items %}
