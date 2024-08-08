@@ -1,0 +1,69 @@
+{% assign current = include.current %}
+{% assign current_deep = include.current | size %}
+{% assign current_folders = current_deep | minus: 1 %}
+
+{% if include.prev %}
+    {% assign prev = include.prev %}
+    {% assign prev_deep = include.prev | size %}
+    {% assign prev_folders = prev_deep | minus: 1 %}
+{% else %}
+    {% assign prev_deep = 0 %}
+    {% assign prev_folders = 0 %}
+{% endif %}
+
+{% for part in current %}
+    {% assign pos = forloop.index | minus: 1 %}
+    {% assign cpart = current[pos] %}
+    {% assign ppart = prev[pos] %}
+
+    {% if cpart == ppart %}
+        {% continue %}
+    {% else %}
+        {% if forloop.index > prev_folders %}
+            {% unless forloop.last %} 
+                <li class="ps-3">
+                    {% assign title = current[pos] | split:"." %}
+                    {% assign tsize = title | size | minus: 1 %}
+                    {% assign title = title[tsize] | join: " " | capitalize %}
+                    {% if pos == 0 %}
+                    <strong class="mb-0 py-0">
+                        {{title}}
+                        <hr class="my-2">
+                    </strong>
+                    {% else %}
+                        {{title}}
+                    {% endif %}
+                    <ul >
+            {% endunless %}
+        {% else %}
+            {% if forloop.index > current_folders %}
+                </ul></li>
+            {% else %}
+                </ul>
+                </li>
+                <li class="ps-3">
+                    {% assign title = current[pos] | split:"." %}
+                    {% assign tsize = title | size | minus: 1 %}
+                    {% assign title = title[tsize] | join: " " | capitalize %}
+                    {% if pos == 0 %}
+                    <strong>
+                        {{title}}
+                        <hr class="my-2">
+                    </strong>
+                    {% else %}
+                        {{title}}
+                    {% endif %}
+                    <ul>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    {% if forloop.last %}
+        {% if page.url == d.url %} {% assign status="active" %} {% else %} {% assign status="" %} {% endif %}
+        {% assign title = d.title | split:"." %}
+        {% assign tsize = title | size | minus: 1 %}
+        {% assign title = title[tsize] | join: " " | capitalize %}
+        <li> 
+            <a href="{{ d.url }}" class="d-inline-block {{status}}" aria-current="page">{{ title }}</a>
+        </li>
+    {% endif %}  
+{% endfor %}

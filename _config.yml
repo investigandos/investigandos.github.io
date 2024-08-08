@@ -114,6 +114,9 @@ collections:
   reviews:
     output: true
     permalink: /:collection/:path
+  recetas:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -127,7 +130,7 @@ defaults:
   - scope:
       path: "_docs"
     values:
-      layout: documentation
+      layout: document
       comments: false
       toc_levels: 2
 
@@ -152,3 +155,12 @@ defaults:
       show_status: true
       comments: true
       share: true
+  
+  - scope:
+      path: "_recetas"
+    values:
+      layout: receta
+      author_profile: false
+      share: true
+      comments: true
+      related: false
