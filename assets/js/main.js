@@ -13,7 +13,7 @@
   };
 
   var options = {
-    valueNames: ['tags', 'authors', 'text', 'consulted_date', 'published_year']
+    valueNames: ['tags', 'authors', 'text', 'consulted_date', 'published_year', 'details']
   };
   var booksList = new List('book', options);
   var mediaList = new List('media', options);

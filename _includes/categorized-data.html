@@ -82,7 +82,7 @@
                             <img class="img-fluid" alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
                         </div>
                         <div class="">
-                            <span class="list-category">{{ item.title }}</span> por {{ item.authors }}
+                            <span class="text">{{ item.title }} por {{ item.authors }}</span>
                             
 
                 {% endif %}
@@ -120,7 +120,7 @@
                 {% endif %}
                 
                 {% for review in site.reviews %}
-                    <span class="small">
+                    <span class="small details">
                     {% if review.[item.type] == id %}
                         <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
                         {% unless forloop.last %} ; {% endunless %}
@@ -129,7 +129,7 @@
                 {% endfor %}
                 
                 {% for post in site.posts %}
-                    <span class="small">
+                    <span class="small details">
                     {% for reference in post.references %}
                         {% if reference == id %}
                             <a href="/blog/{{ post.url }}"> Artículo {% if post.author %} de {{post.author}} {% endif %} </a>
