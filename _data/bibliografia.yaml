@@ -1,3 +1,14 @@
+- title: Análisis comparativo y propuesta metodológica para el análisis del contenido de programas electorales para estimar la posición política en relación al Desarrollo Sostenible
+  type: article
+  url: https://riunet.upv.es/handle/10251/52032
+  stars: 3
+  categories: Política
+  tags: [Análisis programas electorales, Desarrollo sostenible]
+  published_year: 2005
+  consulted_date: 2024-03-16
+  authors: 'Diego Álvarez Sánchez, José Félix Lozano Aguilar'
+  added_by: carlos
+  
 - id: 69434687
   type: media
   title: Why have sperm counts more than halved in the past 40 years?
@@ -6,19 +17,7 @@
   speakers: [Shanna H. Swan]
   consulted_date: 2021-05-18
   stars: 3
-  categories: [Fertilidad]
-  topics: [Contaminación, Factores ambientales]
-  added_by: carlos
-
-- title: Análisis comparativo y propuesta metodológica para el análisis del contenido de programas electorales para estimar la posición política en relación al Desarrollo Sostenible
-  type: article
-  url: https://riunet.upv.es/handle/10251/52032
-  stars: 3
-  categories: Política
-  topics: [Análisis programas electorales, Desarrollo sostenible]
-  published_year: 2005
-  consulted_date: 2024-03-16
-  authors: 'Diego Álvarez Sánchez, José Félix Lozano Aguilar'
+  tags: [Fertilidad, Contaminación, Factores ambientales]
   added_by: carlos
 
 - title: FIRST Human Age-Reversal Trial REPLICATED! This Groundbreaking Treatment Holds the Key to YOUTH?
@@ -29,8 +28,7 @@
   published_year: 2024
   consulted_date: 2024-08-08
   stars: 4
-  categories: [Envejecimiento, Cáncer]
-  topics: [HGH, DHEA, Metformina, Timo]
+  tags: [Envejecimiento, Cáncer, HGH, DHEA, Metformina, Timo]
   added_by: carlos
 
 - title: 'Epigenetic-based age acceleration in a representative sample of older Americans: Associations with aging-related morbidity and mortality'
@@ -38,8 +36,7 @@
   url: https://www.pnas.org/doi/10.1073/pnas.2215840120
   doi: 10.1073/pnas.2215840120
   stars: 4
-  categories: [Envejecimiento]
-  topics: [Epigenética]
+  tags: [Envejecimiento, Epigenética]
   published_year: 2023
   consulted_date: 2024-08-08
   added_by: carlos
@@ -50,8 +47,7 @@
   type: book
   isbn: 9781583335215
   stars: 4
-  categories: [Enfermedades autoinmunes]
-  topics: [Dieta, Paleo]
+  tags: [Enfermedades autoinmunes, Alimentación, Dieta Paleo]
   status: reading 
   published_year: 2014
   consulted_date: 2024-07-01
@@ -62,8 +58,7 @@
   type: book
   isbn: 9780670020348
   stars: 4
-  categories: [Cáncer]
-  topics: [Dieta]
+  tags: [Cáncer, Alimentación]
   status: read #read, reading, pending (indica el estado de lectura)
   published_year: 2008
   consulted_date: 2023-03-16

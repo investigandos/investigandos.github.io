@@ -1,4 +1,5 @@
 {% assign grouped_data = site.data.bibliografia | group_by_exp: 'data', 'data.type' %}
+{% assign grouped_data = grouped_data | sort: 'size' | reverse %}
 
 <div class="mb-3" style="background: #f3f3f3;">
     <ul class="row taxonomy__index">
@@ -13,118 +14,141 @@
     </ul> 
 </div>
 
-{% for list in grouped_data %}
-<section id="{{ list.name }}" class="mb-4">
-    <h2 class="">{{ list.name | capitalize}}</h2>
-    <hr>
-    <div class="row d-flex">
-      {% for data in list.items %}
-            {% assign item = data %}
-            <div class="col-md-6 flex-column flex-fill my-2">
-                {% if item.type == 'media' %}
-                {% assign id = item.id %}
-                <div class="">
-                    {% if item.platform == 'ivoox' %}
-                        {% include /media/podcast-ivoox-player-mini.html id=item.id %}
-                    {% elsif item.platform == 'youtube' %}
-                        {% include /media/video-youtube-player.html id=item.id provider=item.platform %}
-                    {% endif %}
-                </div>
-            {% elsif item.type == 'paper' %}
-                {% assign id = item.doi %}
-                <div class="">
-                    {% if item.url %}
-                    <a href="{{item.url}}" target="_blank">{{ item.title}}</a>
-                    {% else %}
-                    <a href="https://sci-hub.se/{{ item.doi}}" target="_blank">{{ item.title}}</a>
-                    {% endif %}
-                </div>
-            {% elsif item.type == 'article' %}
-                {% assign id = item.url %}
-                <div class="">
-                    <a href="{{ item.url}}" target="_blank">{{ item.title}}</a>
-                </div>
 
-            {% elsif item.type == 'book' %}
-                {% assign id = item.isbn %}
-                <div class="d-sm-flex">
-                    <div class="me-2">
-                        <img class="img-fluid" alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
-                    </div>
-                    <div class="">
-                        {{ item.title }} por {{ item.authors }}
-                        
-
-            {% endif %}
-
-            {% if item.stars %}
-            <span class="stars-container stars-{{ item.stars | times:20 | round: 0 }}" title="{{ item.stars }}/5">★★★★★</span>
-            {% endif %}
-            {% if item.categories %}
-            <span class="page__meta-status text-success small">
-                {% for category in item.categories %} 
-                    {{ category }}
-                    {% unless forloop.last %} - {% endunless %}
-                {% endfor %}
-            </span>
-            {% endif %}
-
-            {% if item.topics %}
-            <div class="page__meta-status text-success small">
-                {% for topic in item.topics %} 
-                    {{ topic }}
-                    {% unless forloop.last %} | {% endunless %}
-                {% endfor %}
+<div class="row py-2">
+    <div class="col mb-2">
+        <form action="javascript:void(0);" class="form-inline">
+            <div class="input-group">
+            <input type="text" class="search form-control form-control-sm" placeholder="Búsqueda">
+            <div class="input-group-append list-filter-reset">
+                <button class="btn btn-sm btn-outline-secondary" type="button">
+                    <i class="fas fa-fw fa-rotate"></i> Borrar filtros
+                </button>
             </div>
-            {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+{% for list in grouped_data %}
+    <section id="{{ list.name }}" class="mb-4">
+        <h2 class="">{{ list.name | capitalize}}</h2>
+        <hr>
+        <div class="">
+            <ul class="row list-group list-group-horizontal taxonomy__index ">
+                {% assign tags_list = site.data.bibliografia | where: 'type', list.name | map: 'tags' | join: ',' | split: ',' | unique %}
+                {% assign grouped_tags = tags_list | group_by: tag | sort: 'size' | reverse %}
 
-            {% if item.published_year or item.consulted_date %}
-                <div class ="small">
-                    <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-                    {% if item.published_year %}
-                    <span class="page__meta-date">
-                        <strong>Publicación:</strong>
-                        <time datetime="{{ item.published_year | date_to_xmlschema }}">{{ item.published_year }}</time>
-                    </span>
-                    {% endif %}
-
-                    {% if item.consulted_date %}
-                    <span class="page__meta-date">
-                        <strong>Consultado:</strong>
-                        <time datetime="{{ item.consulted_date | date_to_xmlschema }}">{{ item.consulted_date | date: "%-d %B, %Y" }}</time>
-                    </span>
-                    {% endif %}
-                </div>
-            {% endif %}
+                {% for tag in grouped_tags %}
+                    <li class="list-group-item list-group-item-action col-sm" data-list-facet="list-tag" data-facet-value="{{ tag.name }}" data-select-single="true">
+                        <strong>{{ tag.name }}</strong> <span class="taxonomy__count">({{ tag.size }})</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="row d-flex list">
             
-            {% for review in site.reviews %}
-                <span class="small">
-                {% if review.[item.type] == id %}
-                    <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
-                    {% unless forloop.last %} ; {% endunless %}
+            {% for data in list.items %}
+                {% assign item = data %}
+                <div class="col-md-6 flex-column flex-fill my-2">
+                {% if item.type == 'media' %}
+                    {% assign id = item.id %}
+                    <div class="">
+                        <span class="text d-none">{{title}} con {{speakers}} en {{ show }} de {{ platform}}</span>
+                        {% if item.platform == 'ivoox' %}
+                            {% include /media/podcast-ivoox-player-mini.html id=item.id %}
+                        {% elsif item.platform == 'youtube' %}
+                            {% include /media/video-youtube-player.html id=item.id provider=item.platform %}
+                        {% endif %}
+                    </div>
+                {% elsif item.type == 'paper' %}
+                    {% assign id = item.doi %}
+                    <div class="text">
+                        {% if item.url %}
+                        <a href="{{item.url}}" target="_blank">{{ item.title}}</a>
+                        {% else %}
+                        <a href="https://sci-hub.se/{{ item.doi}}" target="_blank">{{ item.title}}</a>
+                        {% endif %}
+                    </div>
+                {% elsif item.type == 'article' %}
+                    {% assign id = item.url %}
+                    <div class="text">
+                        <a href="{{ item.url}}" target="_blank">{{ item.title}}</a>
+                    </div>
+
+                {% elsif item.type == 'book' %}
+                    {% assign id = item.isbn %}
+                    <div class="d-sm-flex">
+                        <div class="me-2">
+                            <img class="img-fluid" alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
+                        </div>
+                        <div class="">
+                            <span class="list-category">{{ item.title }}</span> por {{ item.authors }}
+                            
+
                 {% endif %}
-                </span>
-            {% endfor %}
-            
-            {% for post in site.posts %}
-                <span class="small">
-                {% for reference in post.references %}
-                    {% if reference == id %}
-                        <a href="/blog/{{ post.url }}"> Artículo {% if post.author %} de {{post.author}} {% endif %} </a>
+
+                {% if item.stars %}
+                <span class="stars-container stars-{{ item.stars | times:20 | round: 0 }}" title="{{ item.stars }}/5">★★★★★</span>
+                {% endif %}
+
+                {% if item.tags %}
+                <div class="tags text-success small">
+                    {% for tag in item.tags %} 
+                        {{ tag }}
+                        {% unless forloop.last %} | {% endunless %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if item.published_year or item.consulted_date %}
+                    <div class ="small">
+                        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+                        {% if item.published_year %}
+                        <span class="published_year page__meta-date">
+                            <strong>Publicación:</strong>
+                            <time datetime="{{ item.published_year | date_to_xmlschema }}">{{ item.published_year }}</time>
+                        </span>
+                        {% endif %}
+
+                        {% if item.consulted_date %}
+                        <span class="consulted_date page__meta-date">
+                            <strong>Consultado:</strong>
+                            <time datetime="{{ item.consulted_date | date_to_xmlschema }}">{{ item.consulted_date | date: "%-d %B, %Y" }}</time>
+                        </span>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                
+                {% for review in site.reviews %}
+                    <span class="small">
+                    {% if review.[item.type] == id %}
+                        <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
                         {% unless forloop.last %} ; {% endunless %}
                     {% endif %}
+                    </span>
                 {% endfor %}
-                </span>
-            {% endfor %}            
-            
-            {% if item.type == "book" %}
+                
+                {% for post in site.posts %}
+                    <span class="small">
+                    {% for reference in post.references %}
+                        {% if reference == id %}
+                            <a href="/blog/{{ post.url }}"> Artículo {% if post.author %} de {{post.author}} {% endif %} </a>
+                            {% unless forloop.last %} ; {% endunless %}
+                        {% endif %}
+                    {% endfor %}
+                    </span>
+                {% endfor %}            
+                
+                {% if item.type == "book" %}
+                    </div>
                 </div>
-            </div>
-            {% endif %}
-            </div>
-            
-        {% endfor %}
-    </div>
-</section>
+                {% endif %}
+                </div>
+                
+            {% endfor %}
+        </div>
+    </section>
 {% endfor %}
+</div>
+
 

@@ -4,13 +4,29 @@
   var listOptions = {
     valueNames: [
       'list-text',
-      'list-party',
-      'list-category',
+      'list-tag',
+      'list-added_by',
       'list-status',
-      'list-politician',
+      'list-author',
       'list-year'
     ]
   };
+
+  var options = {
+    valueNames: ['tags', 'authors', 'text', 'consulted_date', 'published_year']
+  };
+  var booksList = new List('book', options);
+  var mediaList = new List('media', options);
+  var articlesList = new List('article', options);
+  var papersList = new List('paper', options);
+
+
+  $(".search").keyup(function(){
+    booksList.search($(this).val());
+    mediaList.search($(this).val());
+    articlesList.search($(this).val());
+    papersList.search($(this).val());
+  });
 
   // tooltip
   $(function () {
