@@ -39,7 +39,7 @@
                 {% assign grouped_tags = tags_list | group_by: tag | sort: 'size' | reverse %}
 
                 {% for tag in grouped_tags %}
-                    <li class="list-group-item list-group-item-action col-sm" data-list-facet="list-tag" data-facet-value="{{ tag.name }}" data-select-single="true">
+                    <li class="list-group-item list-group-item-action col-sm text-nowrap" data-list-facet="list-tag" data-facet-value="{{ tag.name }}" data-select-single="true">
                         <strong>{{ tag.name }}</strong> <span class="taxonomy__count">({{ tag.size }})</span>
                     </li>
                 {% endfor %}
@@ -149,6 +149,5 @@
         </div>
     </section>
 {% endfor %}
-</div>
 
 

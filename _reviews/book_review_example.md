@@ -1,7 +1,8 @@
 ---
-book: 8420601586
+book: 9780670020348
 author: Carlos
 subtitle: bla bla
+date: 2024-08-10
 ---
 
 # Introducción
