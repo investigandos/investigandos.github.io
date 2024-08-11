@@ -31,10 +31,11 @@
 </div>
 {% for list in grouped_data %}
     <section id="{{ list.name }}" class="mb-4">
+        
         <h2 class="">{{ list.name | capitalize}}</h2>
         <hr>
-        <div class="">
-            <ul class="row list-group list-group-horizontal taxonomy__index ">
+        <div class="d-none d-md-block">
+            <ul class="row list-group list-group-horizontal taxonomy__index">
                 {% assign tags_list = site.data.bibliografia | where: 'type', list.name | map: 'tags' | join: ',' | split: ',' | unique %}
                 {% assign grouped_tags = tags_list | group_by: tag | sort: 'size' | reverse %}
 
@@ -52,8 +53,8 @@
                 <div class="col-md-6 flex-column flex-fill my-2">
                 {% if item.type == 'media' %}
                     {% assign id = item.id %}
-                    <div class="">
-                        <span class="text d-none">{{title}} con {{speakers}} en {{ show }} de {{ platform}}</span>
+                    <div class="list-text">
+                        <span class="d-none">{{title}} con {{speakers}} en {{ show }} de {{ platform}}</span>
                         {% if item.platform == 'ivoox' %}
                             {% include /media/podcast-ivoox-player-mini.html id=item.id %}
                         {% elsif item.platform == 'youtube' %}
@@ -62,7 +63,7 @@
                     </div>
                 {% elsif item.type == 'paper' %}
                     {% assign id = item.doi %}
-                    <div class="text">
+                    <div class="list-text">
                         {% if item.url %}
                         <a href="{{item.url}}" target="_blank">{{ item.title}}</a>
                         {% else %}
@@ -71,18 +72,18 @@
                     </div>
                 {% elsif item.type == 'article' %}
                     {% assign id = item.url %}
-                    <div class="text">
+                    <div class="list-text">
                         <a href="{{ item.url}}" target="_blank">{{ item.title}}</a>
                     </div>
 
                 {% elsif item.type == 'book' %}
                     {% assign id = item.isbn %}
-                    <div class="d-sm-flex">
+                    <div class="d-sm-flex list-text">
                         <div class="me-2">
                             <img class="img-fluid" alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
                         </div>
                         <div class="">
-                            <span class="text">{{ item.title }} por {{ item.authors }}</span>
+                            <span class="">{{ item.title }} por {{ item.authors }}</span>
                             
 
                 {% endif %}
@@ -92,7 +93,7 @@
                 {% endif %}
 
                 {% if item.tags %}
-                <div class="tags text-success small">
+                <div class="list-tags text-success small">
                     {% for tag in item.tags %} 
                         {{ tag }}
                         {% unless forloop.last %} | {% endunless %}
@@ -104,14 +105,14 @@
                     <div class ="small">
                         <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
                         {% if item.published_year %}
-                        <span class="published_year page__meta-date">
+                        <span class="page__meta-date published_year">
                             <strong>Publicación:</strong>
                             <time datetime="{{ item.published_year | date_to_xmlschema }}">{{ item.published_year }}</time>
                         </span>
                         {% endif %}
 
                         {% if item.consulted_date %}
-                        <span class="consulted_date page__meta-date">
+                        <span class="page__meta-date consulted_date">
                             <strong>Consultado:</strong>
                             <time datetime="{{ item.consulted_date | date_to_xmlschema }}">{{ item.consulted_date | date: "%-d %B, %Y" }}</time>
                         </span>
@@ -120,16 +121,22 @@
                 {% endif %}
                 
                 {% for review in site.reviews %}
-                    <span class="small details">
                     {% if review.[item.type] == id %}
+                    <span class="small list-details">
                         <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
                         {% unless forloop.last %} ; {% endunless %}
-                    {% endif %}
+                        {% if review.draft %}
+                        <span class="text-secondary small">
+                            <i class="fa-fw far fa-file-alt" aria-hidden="true"></i>
+                            Borrador
+                          </span>
+                        {% endif %}
                     </span>
+                    {% endif %}
                 {% endfor %}
                 
                 {% for post in site.posts %}
-                    <span class="small details">
+                    <span class="small list-details">
                     {% for reference in post.references %}
                         {% if reference == id %}
                             <a href="/blog/{{ post.url }}"> Artículo {% if post.author %} de {{post.author}} {% endif %} </a>
