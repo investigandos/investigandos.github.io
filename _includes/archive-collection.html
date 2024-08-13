@@ -1,0 +1,104 @@
+{% assign grouped_data = site.[include.type] | group_by_exp: 'data', 'data.type' %}
+{% assign grouped_data = grouped_data | sort: 'size' | reverse %}
+
+<div class="mb-3" style="background: #f3f3f3;">
+    <ul class="row taxonomy__index">
+    {% for list in grouped_data %}
+        <li class="col-sm">
+        <a href="#{{ list.name | slugify }}">
+            <strong>{{ list.name | capitalize }}</strong> 
+            <span class="taxonomy__count">{{ list.size }}</span> 
+        </a> 
+        </li>
+    {% endfor %}
+    </ul> 
+</div>
+
+
+<div class="row py-2">
+    <div class="col mb-2">
+        <form action="javascript:void(0);" class="form-inline">
+            <div class="input-group">
+            <input type="text" class="search form-control form-control-sm" placeholder="Búsqueda">
+            <div class="input-group-append list-filter-reset">
+                <button class="btn btn-sm btn-outline-secondary" type="button">
+                    <i class="fas fa-fw fa-rotate"></i> Borrar filtros
+                </button>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% for list in grouped_data %}
+    <section id="{{ list.name }}" class="mb-4">
+        <h2 class="">{{ list.name | capitalize}}</h2>
+        <hr>
+
+        <div class="row d-flex list">
+            
+            {% for item in list.items %}
+                <div class="col-md-6 flex-column flex-fill my-2">
+                    <div class="list-text">
+                        <a href="{{ item.url}}" target="_blank">{{ item.title}}</a>
+                    </div>
+
+                    {% if item.stars %}
+                    <span class="stars-container stars-{{ item.stars | times:20 | round: 0 }}" title="{{ item.stars }}/5">★★★★★</span>
+                    {% endif %}
+
+                    {% if item.tags %}
+                    <div class="list-tags text-success small">
+                        {% for tag in item.tags %} 
+                            {{ tag }}
+                            {% unless forloop.last %} | {% endunless %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if item.published_year or item.consulted_date %}
+                    <div class ="small">
+                        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+                        {% if item.date %}
+                        <span class="page__meta-date published_year">
+                            <strong>Publicación:</strong>
+                            <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date }}</time>
+                        </span>
+                        {% endif %}
+
+                    </div>
+                    {% endif %}
+                
+                    {% for review in site.reviews %}
+                        {% if review.[item.type] == id %}
+                        <span class="small list-details">
+                            <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
+                            {% unless forloop.last %} ; {% endunless %}
+                            {% if review.draft %}
+                            <span class="text-secondary small">
+                                <i class="fa-fw far fa-file-alt" aria-hidden="true"></i>
+                                Borrador
+                            </span>
+                            {% endif %}
+                        </span>
+                        {% endif %}
+                    {% endfor %}
+                
+                {% for post in site.posts %}
+                    <span class="small list-details">
+                    {% for reference in post.references %}
+                        {% if reference == id %}
+                            <a href="/blog/{{ post.url }}"> Artículo {% if post.author %} de {{post.author}} {% endif %} </a>
+                            {% unless forloop.last %} ; {% endunless %}
+                        {% endif %}
+                    {% endfor %}
+                    </span>
+                {% endfor %}            
+
+                </div>
+                
+            {% endfor %}
+        </div>
+    </section>
+{% endfor %}
+
+

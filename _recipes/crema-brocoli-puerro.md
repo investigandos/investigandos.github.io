@@ -30,6 +30,6 @@ show_abreviations: true
 prepmins: 5
 cookmins: 35
 yield: 4-5
-receta: [Cremas]
-Author: Elaboración propia
+type: Cremas
+author: Elaboración propia
 ---

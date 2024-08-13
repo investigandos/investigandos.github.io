@@ -1,4 +1,5 @@
 ---
+type: book
 book: 9781785044540
 author: Carlos
 subtitle: the science and art of longevity

@@ -1,7 +1,7 @@
 <div>
-    <h4 class="fst-italic">Anotaciones recientes</h4>
+    <h4 class="fst-italic">{{ include.title }}</h4>
     <ul class="list-unstyled">
-    {% for recent in site.reviews limit: 5 %}
+    {% for recent in site.[include.type] limit: 5 %}
     <li>
         <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{{ recent.url }}">
             {% if recent.book %}
@@ -12,28 +12,9 @@
             <div class="col-lg-8">
                 <h6 class="mb-0">{{ recent.title }} </h6>
                 <small class="text-body-secondary"> {{recent.date | date: "%-d %B %Y" }} </small>
-                <small class="text-body-secondary"> por {{recent.author}} </small>
-                {% if recent.draft %}
-                <small class="text-primary"> <i class="fa-fw far fa-file-alt" aria-hidden="true"></i> Borrador</span> </small>
-                {% endif %}                                           
+                {% if recent.author %} <small class="text-body-secondary"> por {{recent.author}} </small> {% endif %}
+                {% if recent.draft %} <small class="text-primary"> <i class="fa-fw far fa-file-alt" aria-hidden="true"></i> Borrador</span> </small>{% endif %}                                           
             </div>
-        </a>
-    </li>
-    {% endfor %}
-    </ul>
-</div>
-<div>
-    <h4 class="fst-italic">Artículos recientes</h4>
-    <ul class="list-unstyled">
-    {% for recent in site.posts limit: 5 %}
-    <li>
-        <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{{ recent.url }}">
-        <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-        <div class="col-lg-8">
-            <h6 class="mb-0">{{ recent.title }} </h6>
-            <small class="text-body-secondary"> {{recent.date}} </small>
-            <small class="text-body-secondary"> por {{recent.author}} </small>
-        </div>
         </a>
     </li>
     {% endfor %}

@@ -1,4 +1,4 @@
-{% assign grouped_data = site.data.bibliografia | group_by_exp: 'data', 'data.type' %}
+{% assign grouped_data = site.data.biblio | group_by_exp: 'data', 'data.type' %}
 {% assign grouped_data = grouped_data | sort: 'size' | reverse %}
 
 <div class="mb-3" style="background: #f3f3f3;">
@@ -36,7 +36,7 @@
         <hr>
         <div class="d-none d-md-block">
             <ul class="row list-group list-group-horizontal taxonomy__index">
-                {% assign tags_list = site.data.bibliografia | where: 'type', list.name | map: 'tags' | join: ',' | split: ',' | unique %}
+                {% assign tags_list = site.data.biblio | where: 'type', list.name | map: 'tags' | join: ',' | split: ',' | unique %}
                 {% assign grouped_tags = tags_list | group_by: tag | sort: 'size' | reverse %}
 
                 {% for tag in grouped_tags %}

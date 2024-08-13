@@ -114,7 +114,7 @@ collections:
   reviews:
     output: true
     permalink: /:collection/:path
-  recetas:
+  recipes:
     output: true
     permalink: /:collection/:path/
 
@@ -161,9 +161,9 @@ defaults:
       toc: true
   
   - scope:
-      path: "_recetas"
+      path: "_recipes"
     values:
-      layout: receta
+      layout: recipe
       author_profile: false
       share: true
       comments: true

@@ -22,7 +22,10 @@
             <a class="nav-link" href="/docs">Documentación</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/bibliografia">Bibliografía</a>
+            <a class="nav-link" href="/biblio">Bibliografía</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reviews">Anotaciones</a>
           </li>
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
@@ -95,7 +98,9 @@
       {% assign url = site.url %}
       {% for section in sections offset: 1 %}
           {% if forloop.last %}
-            <li class="breadcrumb-item active" aria-current="page">{{ section }}</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ section | replace:'_',' ' | replace:'-',' ' | replace:'.',' ' | replace:'1','' | replace:'1','' | replace:'2','' | replace:'3','' | replace:'4','' | replace:'5','' | replace:'6','' | replace:'7','' | replace:'8','' | replace:'9','' | capitalize }}
+            </li>
           {% else %}
             {% assign crumb_limit = forloop.index | plus: 1 %}
             {% assign crumb = "" %}
@@ -104,7 +109,16 @@
             {% endfor %}  
             {% assign page_data = site.documents | where: 'url', crumb | size %}
             <li class="breadcrumb-item">
-              {% if page_data > 0 %}<a href="{{ crumb }}">{% endif %}{{ section | replace:'_',' ' | replace:'-',' ' | capitalize }}{% if page_data %}</a>{% endif %}</li>
+              {% if page_data > 0 %}
+                <a href="{{ crumb }}">
+              {% endif %}
+
+              {{ section | replace:'_',' ' | replace:'-',' ' | replace:'.',' ' | replace:'1','' | replace:'1','' | replace:'2','' | replace:'3','' | replace:'4','' | replace:'5','' | replace:'6','' | replace:'7','' | replace:'8','' | replace:'9','' | capitalize }}
+
+              {% if page_data %}
+                </a>
+              {% endif %}
+            </li>
           {% endif %}
       {% endfor %}
       
