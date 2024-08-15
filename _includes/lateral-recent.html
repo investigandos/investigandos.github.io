@@ -16,7 +16,12 @@
                     <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                 {% endif %}
                 <div class="col-lg-8">
-                    <h6 class="mb-0">{{ recent.title }} </h6>
+                    {% if include.type == "docs" %}
+                    {% assign title = recent.url | split:"/" %}
+                    <h6 class="mb-0">{{ title[2] | capitalize }} </h6>
+                    {% else %}
+                    <h6 class="mb-0">{{ recent.title | capitalize }} </h6>
+                    {% endif %}
                     <small class="text-body-secondary"> {{recent.date | date: "%-d %B %Y" }} </small>
                     {% if recent.author %} <small class="text-body-secondary"> por {{recent.author}} </small> {% endif %}
                     {% if recent.draft %} <small class="text-primary"> <i class="fa-fw far fa-file-alt" aria-hidden="true"></i> Borrador</span> </small>{% endif %}                                           
