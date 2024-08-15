@@ -52,7 +52,6 @@
                 {% assign item = data %}
                 <div class="col-md-6 flex-column flex-fill my-2">
                 {% if item.type == 'media' %}
-                    {% assign id = item.id %}
                     <div class="list-text">
                         <span class="d-none">{{title}} con {{speakers}} en {{ show }} de {{ platform}}</span>
                         {% if item.platform == 'ivoox' %}
@@ -62,25 +61,22 @@
                         {% endif %}
                     </div>
                 {% elsif item.type == 'paper' %}
-                    {% assign id = item.doi %}
                     <div class="list-text">
                         {% if item.url %}
                         <a href="{{item.url}}" target="_blank">{{ item.title}}</a>
                         {% else %}
-                        <a href="https://sci-hub.se/{{ item.doi}}" target="_blank">{{ item.title}}</a>
+                        <a href="https://sci-hub.se/{{ item.id}}" target="_blank">{{ item.title}}</a>
                         {% endif %}
                     </div>
                 {% elsif item.type == 'article' %}
-                    {% assign id = item.url %}
                     <div class="list-text">
                         <a href="{{ item.url}}" target="_blank">{{ item.title}}</a>
                     </div>
 
                 {% elsif item.type == 'book' %}
-                    {% assign id = item.isbn %}
                     <div class="d-sm-flex list-text">
                         <div class="me-2">
-                            <img class="img-fluid" alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.isbn }}-M.jpg">
+                            <img class="img-fluid" alt="{{ item.title }}" src="https://covers.openlibrary.org/b/isbn/{{ item.id }}-M.jpg">
                         </div>
                         <div class="">
                             <span class="">{{ item.title }} por {{ item.authors }}</span>
@@ -119,20 +115,18 @@
                         {% endif %}
                     </div>
                 {% endif %}
-                
-                {% for review in site.reviews %}
-                    {% if review.[item.type] == id %}
+                {% assign reviews = site.reviews | where: item.type, item.id %}
+                {% for review in reviews %}
                     <span class="small list-details">
                         <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
                         {% unless forloop.last %} ; {% endunless %}
                         {% if review.draft %}
                         <span class="text-secondary small">
-                            <i class="fa-fw far fa-file-alt" aria-hidden="true"></i>
+                            <i class="fa-fw far fa-edit" aria-hidden="true"></i>
                             Borrador
                           </span>
                         {% endif %}
                     </span>
-                    {% endif %}
                 {% endfor %}
                 
                 {% for post in site.posts %}

@@ -1,33 +1,59 @@
 <div>
     <h4 class="fst-italic">{{ include.title }}</h4>
     <ul class="list-unstyled">
-    {% for recent in site.[include.type] limit: 5 %}
-        {% if include.type == "docs" %}
-            {% assign deepness = recent.url | split:"/" | size %}
-            {% if deepness > 3 %}
-                {% continue %}
-            {% endif %}
-        {% endif %}    
-        <li>
-            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{{ recent.url }}">
-                {% if recent.book %}
-                    <img class="" alt="{{ recent.title }}" width="auto" height="96" src="https://covers.openlibrary.org/b/isbn/{{ recent.book }}-S.jpg">
-                {% else %}
-                    <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                {% endif %}
-                <div class="col-lg-8">
-                    {% if include.type == "docs" %}
-                    {% assign title = recent.url | split:"/" %}
-                    <h6 class="mb-0">{{ title[2] | capitalize }} </h6>
-                    {% else %}
-                    <h6 class="mb-0">{{ recent.title | capitalize }} </h6>
+    {% if include.data_source %}
+        {% assign data = site.data.[include.type] | reverse %}
+        {% for recent in data limit: 5 %}
+            <li>
+                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+                    {% if recent.type == "book" %}
+                        <img class="" alt="{{ recent.title }}" width="auto" height="96" src="https://covers.openlibrary.org/b/isbn/{{ recent.id }}-S.jpg">
                     {% endif %}
-                    <small class="text-body-secondary"> {{recent.date | date: "%-d %B %Y" }} </small>
-                    {% if recent.author %} <small class="text-body-secondary"> por {{recent.author}} </small> {% endif %}
-                    {% if recent.draft %} <small class="text-primary"> <i class="fa-fw far fa-file-alt" aria-hidden="true"></i> Borrador</span> </small>{% endif %}                                           
-                </div>
-            </a>
-        </li>
-    {% endfor %}
+                    <div class="flex-fill flex-wrap">
+                        {% if include.type == "docs" %}
+                        {% assign title = recent.url | split:"/" %}
+                        <h6 class="mb-0 pe-2">{{ title[2] | capitalize | truncatewords: 10 }} </h6>
+                        {% else %}
+                        <h6 class="mb-0 pe-2">{{ recent.title | capitalize | truncatewords: 10 }} </h6>
+                        {% endif %}
+                        {% if recent.type %} <small class="text-dark text-nowrap"> <i class="fa-fw far fa-file-code" aria-hidden="true"></i> {{recent.type }}</small>{% endif %}  
+                        {% if recent.date %} <small class="text-body-secondary"> {{recent.date | date: "%-d %B %Y" }} </small> {% endif %}
+                        {% if recent.author %} <small class="text-body-secondary"> por {{recent.author}} </small> {% endif %}
+                        {% if recent.added_by %} <small class="text-body-secondary"> añadido por {{recent.added_by}} </small> {% endif %}
+                        {% if recent.draft %} <small class="text-primary text-nowrap"> <i class="fa-fw far fa-edit" aria-hidden="true"></i> Borrador</small>{% endif %}  
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    {% else %}
+        {% for recent in site.[include.type] limit: 5 %}
+            {% if include.type == "docs" %}
+                {% assign deepness = recent.url | split:"/" | size %}
+                {% if deepness > 3 %}
+                    {% continue %}
+                {% endif %}
+            {% endif %}    
+            <li>
+                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{{ recent.url }}">
+                    {% if recent.type == "book" %}
+                        <img class="" alt="{{ recent.title }}" width="auto" height="96" src="https://covers.openlibrary.org/b/isbn/{{ recent.book }}-S.jpg">                        
+                    {% endif %}
+                    <div class="flex-fill flex-wrap">
+                        {% if include.type == "docs" %}
+                        {% assign title = recent.url | split:"/" %}
+                        <h6 class="mb-0 pe-2">{{ title[2] | capitalize | truncatewords: 10 }} </h6>
+                        {% else %}
+                        <h6 class="mb-0 pe-2">{{ recent.title | capitalize | truncatewords: 10 }} </h6>
+                        {% endif %}
+                        {% if recent.type %} <small class="text-dark text-nowrap"> <i class="fa-fw far fa-file-code" aria-hidden="true"></i> {{recent.type }}</small>{% endif %}  
+                        {% if recent.date %} <small class="text-body-secondary"> {{recent.date | date: "%-d %B %Y" }} </small> {% endif %}
+                        {% if recent.author %} <small class="text-body-secondary"> por {{recent.author}} </small> {% endif %}
+                        {% if recent.added_by %} <small class="text-body-secondary"> añadido por {{recent.added_by}} </small> {% endif %}
+                        {% if recent.draft %} <small class="text-primary text-nowrap"> <i class="fa-fw far fa-edit" aria-hidden="true"></i> Borrador</small>{% endif %}                                      
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    {% endif %}
     </ul>
 </div>

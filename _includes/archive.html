@@ -1,18 +1,24 @@
-{% assign grouped_data = site.[include.type] | group_by_exp: 'data', 'data.type' %}
-{% assign grouped_data = grouped_data | sort: 'size' | reverse %}
+{% unless include.no_taxonomy %}
+    {% if include.data_source %}
+        {% assign grouped_data = site.data.[include.type] | group_by_exp: 'data', 'data.type' %}
+    {% else %}
+        {% assign grouped_data = site.[include.type] | group_by_exp: 'data', 'data.type' %}
+    {% endif %}
+    {% assign grouped_data = grouped_data | sort: 'size' | reverse %}
 
-<div class="mb-3" style="background: #f3f3f3;">
-    <ul class="row taxonomy__index">
-    {% for list in grouped_data %}
-        <li class="col-sm">
-        <a href="#{{ list.name | slugify }}">
-            <strong>{{ list.name | capitalize }}</strong> 
-            <span class="taxonomy__count">{{ list.size }}</span> 
-        </a> 
-        </li>
-    {% endfor %}
-    </ul> 
-</div>
+    <div class="mb-3" style="background: #f3f3f3;">
+        <ul class="row taxonomy__index">
+        {% for list in grouped_data %}
+            <li class="col-sm">
+            <a href="#{{ list.name | slugify }}">
+                <strong>{{ list.name | capitalize }}</strong> 
+                <span class="taxonomy__count">{{ list.size }}</span> 
+            </a> 
+            </li>
+        {% endfor %}
+        </ul> 
+    </div>
+{% endunless %}
 
 
 <div class="row py-2">
@@ -67,20 +73,18 @@
 
                     </div>
                     {% endif %}
-                
-                    {% for review in site.reviews %}
-                        {% if review.[item.type] == id %}
+                    {% assign reviews = site.reviews | where: item.type, item.id %}
+                    {% for review in reviews %}
                         <span class="small list-details">
                             <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
                             {% unless forloop.last %} ; {% endunless %}
                             {% if review.draft %}
                             <span class="text-secondary small">
-                                <i class="fa-fw far fa-file-alt" aria-hidden="true"></i>
+                                <i class="fa-fw far fa-edit" aria-hidden="true"></i>
                                 Borrador
                             </span>
                             {% endif %}
                         </span>
-                        {% endif %}
                     {% endfor %}
                 
                 {% for post in site.posts %}

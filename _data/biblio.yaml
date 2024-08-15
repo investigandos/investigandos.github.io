@@ -1,6 +1,7 @@
 - title: Análisis comparativo y propuesta metodológica para el análisis del contenido de programas electorales para estimar la posición política en relación al Desarrollo Sostenible
   type: article
   url: https://riunet.upv.es/handle/10251/52032
+  id: 10251/52032 #RANDOM
   stars: 3
   categories: Política
   tags: [Análisis programas electorales, Desarrollo sostenible]
@@ -34,7 +35,7 @@
 - title: 'Epigenetic-based age acceleration in a representative sample of older Americans: Associations with aging-related morbidity and mortality'
   type: paper
   url: https://www.pnas.org/doi/10.1073/pnas.2215840120
-  doi: 10.1073/pnas.2215840120
+  id: 10.1073/pnas.2215840120 #DOI
   stars: 4
   tags: [Envejecimiento, Epigenética]
   published_year: 2023
@@ -45,7 +46,7 @@
 - title: The Wahls Protocol
   authors: [Terry Wahls]
   type: book
-  isbn: 9781583335215
+  id: 9781583335215 #ISBN
   stars: 4
   tags: [Enfermedades autoinmunes, Alimentación, Dieta Paleo]
   status: reading 
@@ -56,7 +57,7 @@
 - title: Anti Cáncer
   authors: [David Servan-Schreiber]
   type: book
-  isbn: 9780670020348
+  id: 9780670020348 #ISBN
   stars: 4
   tags: [Cáncer, Alimentación]
   status: read #read, reading, pending (indica el estado de lectura)
@@ -68,7 +69,7 @@
   authors: Dr. Peter Attia
   type: book
   stars: 3
-  isbn: 9781785044540
+  id: 9781785044540 #ISBN
   tags: [Envejecimiento, Epigenética, Cáncer, Alimentación, Actividad física, Autofagia, mTOR, Rapamicina]
   status: reading
   published_year: 2023
