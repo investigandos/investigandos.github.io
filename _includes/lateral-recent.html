@@ -2,21 +2,27 @@
     <h4 class="fst-italic">{{ include.title }}</h4>
     <ul class="list-unstyled">
     {% for recent in site.[include.type] limit: 5 %}
-    <li>
-        <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{{ recent.url }}">
-            {% if recent.book %}
-                <img class="" alt="{{ recent.title }}" width="auto" height="96" src="https://covers.openlibrary.org/b/isbn/{{ recent.book }}-S.jpg">
-            {% else %}
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        {% if include.type == "docs" %}
+            {% assign deepness = recent.url | split:"/" | size %}
+            {% if deepness > 3 %}
+                {% continue %}
             {% endif %}
-            <div class="col-lg-8">
-                <h6 class="mb-0">{{ recent.title }} </h6>
-                <small class="text-body-secondary"> {{recent.date | date: "%-d %B %Y" }} </small>
-                {% if recent.author %} <small class="text-body-secondary"> por {{recent.author}} </small> {% endif %}
-                {% if recent.draft %} <small class="text-primary"> <i class="fa-fw far fa-file-alt" aria-hidden="true"></i> Borrador</span> </small>{% endif %}                                           
-            </div>
-        </a>
-    </li>
+        {% endif %}    
+        <li>
+            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{{ recent.url }}">
+                {% if recent.book %}
+                    <img class="" alt="{{ recent.title }}" width="auto" height="96" src="https://covers.openlibrary.org/b/isbn/{{ recent.book }}-S.jpg">
+                {% else %}
+                    <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                {% endif %}
+                <div class="col-lg-8">
+                    <h6 class="mb-0">{{ recent.title }} </h6>
+                    <small class="text-body-secondary"> {{recent.date | date: "%-d %B %Y" }} </small>
+                    {% if recent.author %} <small class="text-body-secondary"> por {{recent.author}} </small> {% endif %}
+                    {% if recent.draft %} <small class="text-primary"> <i class="fa-fw far fa-file-alt" aria-hidden="true"></i> Borrador</span> </small>{% endif %}                                           
+                </div>
+            </a>
+        </li>
     {% endfor %}
     </ul>
 </div>
