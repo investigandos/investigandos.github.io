@@ -88,3 +88,35 @@
   added_by: carlos
   timing: [26-46]
 
+- id: 10.1038/nri.2015.4 
+  title: "Specialized pro-resolving mediators: endogenous regulators of infection and inflammation"
+  type: paper
+  authors: [Maria C Basil, Bruce D Levy]
+  tags: [Inflamación, SPMs]
+  published_year: 2016
+  consulted_date: 2024-09-04
+  stars: 4
+  added_by: carlos
+
+- id: 10.1097/MCO.0000000000000353
+  title: "Resolving inflammation by using nutrition therapy roles for specialized proresolving mediators"
+  type: paper
+  authors: [Norling Lucy V., Ly Lucy, Dalli Jesmond]
+  tags: [Inflamación, SPMs]
+  published_year: 2017
+  consulted_date: 2024-09-04
+  stars: 4
+  added_by: carlos
+
+- id: 10.1038/nature13479
+  title: "Pro-resolving lipid mediators are leads for resolution physiology"
+  type: paper
+  authors: [Charles N Serhan]
+  tags: [Inflamación, SPMs]
+  published_year: 2014
+  consulted_date: 2024-09-04
+  stars: 4
+  added_by: carlos
+
+
+
