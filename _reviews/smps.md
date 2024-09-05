@@ -2,12 +2,12 @@
 type: paper
 id: 10.1038/nature13479
 author: Carlos
-subtitle: Pro-resolving lipid mediators
+title: '"Pro-resolving lipid mediators are leads for resolution physiology" de Charles N. Serhan (2014)'
+subtitle: '"Pro-resolving lipid mediators are leads for resolution physiology" de Charles N. Serhan (2014)'
 date: 2024-09-05
 ---
-# "Pro-resolving lipid mediators are leads for resolution physiology" de Charles N. Serhan (2014)
 
-## Síntesis
+# Síntesis
 
 Las lipoxinas, resolvinas, protectinas and maresinas son parte de los mediadores lipídicos pro-resolutivos (SPMs) de la inflamación aguda. Sus versiones sintéticas, derivados del DHA y EPA (Omega-3) tienen potentes efectos que median en distintos mecanismos distintos: el **anti-inflamatorio** y el recién descubierto **pro-resolutivo**. Regulan la inflamación y promueven su resolución en lugar de simplemente suprimirla. Estos mediadores se producen durante la fase de resolución de la inflamación y son cruciales para prevenir daños en los tejidos y enfermedades crónicas.
 
@@ -24,7 +24,7 @@ De acuerdo al estudio, la aspirina juega un papel clave en la mediación de la i
 
 La inhibición de COX-2 o lipoxygenase retrasan el inicio del proceso resolutivo. 
 
-## Detalles
+# Detalles
 La respuesta a un traumatismo o infección viene mediada por moléculas lipídicas, principalmente eicosanoidess (prosta-
 glandinas and leukotrienes) producidos a partir del ácido graso araquidónico (C<sub>20</sub>H<sub>32</sub>O<sub>2</sub>). Al igual que varias cytokinas and chemokinas. Todas ellas con un importancia vital porque en la respuesta inicial, su interacción amplifica la inflamación. Se trata de un mecanismo protector, pero una inflamación excesiva o prolongada puede resultar perjudicial y está vinculada con varias enfermedades crónicas.
 
