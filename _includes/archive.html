@@ -73,7 +73,7 @@
 
                     </div>
                     {% endif %}
-                    {% assign reviews = site.reviews | where: item.type, item.id %}
+                    {% assign reviews = site.reviews | where: id, item.id %}
                     {% for review in reviews %}
                         <span class="small list-details">
                             <a href="{{ review.url }}"> Anotaciones {% if review.author %} de {{review.author}} {% endif %} </a>
