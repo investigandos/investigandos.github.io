@@ -1,6 +1,6 @@
 ---
 type: paper
-id: 10.1038/nature13479
+biblio_id: 10.1038/nature13479
 author: Carlos
 title: '"Pro-resolving lipid mediators are leads for resolution physiology" de Charles N. Serhan (2014)'
 subtitle: '"Pro-resolving lipid mediators are leads for resolution physiology" de Charles N. Serhan (2014)'
