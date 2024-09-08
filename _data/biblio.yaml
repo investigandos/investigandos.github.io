@@ -1,7 +1,6 @@
 - title: Análisis comparativo y propuesta metodológica para el análisis del contenido de programas electorales para estimar la posición política en relación al Desarrollo Sostenible
   type: article
-  url: https://riunet.upv.es/handle/10251/52032
-  id: 10251/52032 #RANDOM
+  id: https://riunet.upv.es/handle/10251/52032
   stars: 3
   categories: Política
   tags: [Análisis programas electorales, Desarrollo sostenible]
@@ -119,6 +118,7 @@
   added_by: carlos
 
 - type: article
+  title: Omega-3 Fatty Acids - Fact Sheet for Health Professionals
   id: https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/
   authors: nih.gov
   tags: [Alimentación, Omega-3]
