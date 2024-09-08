@@ -83,8 +83,8 @@
   show: Fundación Areces
   published_year: 2021
   consulted_date: 2024-09-04
-  stars: 4
-  tags: [COVID, Inflamación, SPMs, Suplementación]
+  stars: 2
+  tags: [COVID, Inflamación, SPMs, Omega-3]
   added_by: carlos
   timing: [26-46]
 
@@ -92,7 +92,7 @@
   title: "Specialized pro-resolving mediators: endogenous regulators of infection and inflammation"
   type: paper
   authors: [Maria C Basil, Bruce D Levy]
-  tags: [Inflamación, SPMs]
+  tags: [Inflamación, SPMs, Omega-3]
   published_year: 2016
   consulted_date: 2024-09-04
   stars: 4
@@ -102,7 +102,7 @@
   title: "Resolving inflammation by using nutrition therapy roles for specialized proresolving mediators"
   type: paper
   authors: [Norling Lucy V., Ly Lucy, Dalli Jesmond]
-  tags: [Inflamación, SPMs]
+  tags: [Inflamación, SPMs, Omega-3]
   published_year: 2017
   consulted_date: 2024-09-04
   stars: 4
@@ -112,11 +112,19 @@
   title: "Pro-resolving lipid mediators are leads for resolution physiology"
   type: paper
   authors: [Charles N Serhan]
-  tags: [Inflamación, SPMs]
+  tags: [Inflamación, SPMs, Omega-3]
   published_year: 2014
   consulted_date: 2024-09-04
   stars: 4
   added_by: carlos
 
+- type: article
+  id: https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/
+  authors: nih.gov
+  tags: [Alimentación, Omega-3]
+  published_year: 2022
+  consulted_date: 2024-09-08
+  stars: 4
+  added_by: carlos
 
 

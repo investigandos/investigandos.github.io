@@ -3,13 +3,17 @@ type: paper
 biblio_id: 10.1038/nature13479
 author: Carlos
 title: '"Pro-resolving lipid mediators are leads for resolution physiology" de Charles N. Serhan (2014)'
-subtitle: '"Pro-resolving lipid mediators are leads for resolution physiology" de Charles N. Serhan (2014)'
+subtitle: Resumen
 date: 2024-09-05
 ---
 
 # Síntesis
 
-Las lipoxinas, resolvinas, protectinas and maresinas son parte de los mediadores lipídicos pro-resolutivos (SPMs) de la inflamación aguda. Sus versiones sintéticas, derivados del DHA y EPA (Omega-3) tienen potentes efectos que median en distintos mecanismos distintos: el **anti-inflamatorio** y el recién descubierto **pro-resolutivo**. Regulan la inflamación y promueven su resolución en lugar de simplemente suprimirla. Estos mediadores se producen durante la fase de resolución de la inflamación y son cruciales para prevenir daños en los tejidos y enfermedades crónicas.
+De acuerdo al estudio, el proceso inflamatorio comienza con la activación de células inmunitarias que liberan mediadores proinflamatorios, como las prostaglandinas y leucotrienos, que reclutan células como neutrófilos al sitio de la inflamación. Posteriormente, durante la fase de resolución, se activan mediadores lipídicos pro-resolutivos como resolvinas, protectinas y maresinas. Estos mediadores inducen la apoptosis de los neutrófilos, promueven la fagocitosis de células muertas y bacterias por los macrófagos y restauran la homeostasis. Este proceso evita la inflamación crónica y favorece la reparación tisular.
+
+Las lipoxinas, resolvinas, protectinas y maresinas son parte de los mediadores lipídicos pro-resolutivos (SPMs) de la inflamación aguda. Sus versiones sintéticas, derivados del DHA y EPA (Omega-3) tienen potentes efectos que median en distintos mecanismos distintos: el **anti-inflamatorio** y el recién descubierto **pro-resolutivo**. Regulan la inflamación y promueven su resolución en lugar de simplemente suprimirla. Estos mediadores se producen durante la fase de resolución de la inflamación y son cruciales para prevenir daños en los tejidos y enfermedades crónicas.
+
+Los SMPs no solo suprimen la inflamación, sino que activan mecanismos que promueven la resolución activa, eliminando las células inflamatorias, promoviendo la regeneración de tejidos y restaurando la homeostasis. A diferencia de los antiinflamatorios que pueden inhibir la respuesta inmunitaria y tener efectos secundarios a largo plazo, los SMPs tienen el potencial de resolver la inflamación sin comprometer las defensas del cuerpo.
 
 El estudio destaca su relevancia para terapias innovadoras en enfermedades inflamatorias crónicas, como la artritis y el asma, CVD y su capacidad para estimular la regeneración tisular.
 
