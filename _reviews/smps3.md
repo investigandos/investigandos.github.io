@@ -32,6 +32,7 @@ acronyms:
 
 - SPMs are active in the picogram to nanogram dose range, whereby they are able to control inflammation, limit tissue damage, shorten resolution intervals, promote healing and alleviate pain in experimental models of inflammation and resolution
 
+- Tanto la aspitina, las estatinas y los glucocorticoides promueven la resolución inflamatoria por interacción con los SPMs
 ## Proceso inflamatorio
 
 Acute inflammation is initiated within seconds of pathogen detection. Granulocytes are rapidly recruited to sites of infection, where they become activated and augment the resident capacity of infected tissue to kill and ultimately clear the pathogen. These early events are coordinated by several families of pro-inflammatory mediators, including lipid mediators (such as prostaglandins and leukotrienes), cytokines and chemokines. These pro-inflammatory mediators have overlapping and distinct functions and ultimately induce an increase in vascular permeability and orchestrate leukocyte recruitment. 
