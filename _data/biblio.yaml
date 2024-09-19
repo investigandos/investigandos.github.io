@@ -125,3 +125,11 @@
   consulted_date: 2024-09-09
   stars: 4
   added_by: carlos
+
+- type: article
+  id: https://www.cancer.gov/espanol/cancer/causas-prevencion/riesgo/germenes-infecciosos/vph-y-cancer
+  title: El virus del papiloma humano (VPH) y el cáncer
+  authors: cancer.gov
+  tags: [VPH, Cáncer]
+  published_year: 2023
+  consulted_date: 2024-06-08
